@@ -11,5 +11,14 @@ class Pacient extends Model implements AuthenticatableContract
 {
     use HasFactory;
     use Authenticatable;
-    protected $fillable = ['email','nom','cognom','data_naixament','num_imatges','contrasena','metge_associat','num_fotos'];
+    protected $fillable = ['email','nom','cognom','data_naixament','num_imatges','contrasena','ID_metge_associat','num_fotos'];
+
+
+    public function metge(){
+        return $this->belongsTo(Metge::class, 'id');
+    }
+
+    public function imatges(){
+        return $this->hasMany(Imatge::class, 'id');
+    }
 }

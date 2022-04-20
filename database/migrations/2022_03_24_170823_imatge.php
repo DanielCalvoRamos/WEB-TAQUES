@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('imatges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pacient_associat');
+            $table->integer('ID_pacient_associat');
             $table->date('data_pujada');
             $table->string('comentaris_metge');
             $table->integer('percentatge_malignitat');

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('contrasena');
             $table->date('data_naixament');
-            $table->string('metge_associat');
+            $table->integer('ID_metge_associat');
             $table->integer('num_fotos');
             
             $table->rememberToken();

@@ -17,6 +17,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    //public $incrementing = false; 
+
+    public function metge(){
+        return $this->hasOne(Metge::class);
+    }
     protected $fillable = [
         'email',
         'role',

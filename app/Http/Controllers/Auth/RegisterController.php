@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Pacient;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -71,6 +73,9 @@ class RegisterController extends Controller
             'role'     => 2,
             'password' => Hash::make($data['password']),
         ]);
+        $id_metge_associat=DB::table('users')->join('metges','users.email','=','metges.email')->where('metges.email','=',Auth::user()->email)->select('metges.id')->get();
+        $plucked=$id_metge_associat->pluck('id');
+
         Pacient::create([
             'email'          => $data['email'],
             'nom'            => $data['name'],
@@ -78,7 +83,7 @@ class RegisterController extends Controller
             'data_naixament' => $data['birth_date'],
             'contrasena'     => Hash::make($data['password']),
             'num_fotos'      =>0,
-            'metge_associat' =>'juan',
+            'ID_metge_associat' =>$plucked[0],
         ]);
         return $userr;
 
