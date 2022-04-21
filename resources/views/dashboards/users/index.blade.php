@@ -36,7 +36,7 @@
                     <tbody>
                       
         
-                        @foreach ($metges3=app\Models\Metge::where('id','=',Auth::user()->id)->get() as $metge)
+                        @foreach ($metges=app\Models\Metge::where('id','=',Auth::user()->id)->get() as $metge)
                          @foreach($metge->pacients as $pacient)   
                         <tr>
                             <td>{{$pacient->id}}</td>
