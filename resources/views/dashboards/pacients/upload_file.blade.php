@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('LOGEADO COMO ADMIN') }}
+                    {{ __('SUBIR FICHERO') }}
                 </div>
             </div>
         </div>
