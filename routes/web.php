@@ -29,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function(){
     Route::get('dashboard',[PacientController::class,'index'])->name('pacient.dashboard');
+    Route::post('dropzone/store', [PacientController::class,'dropzoneStore'])->name('dropzone.store');
 
 });
 

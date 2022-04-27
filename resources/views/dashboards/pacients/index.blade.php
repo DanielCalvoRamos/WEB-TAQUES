@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Pujar imatges') }}</div>
+                <button onclick="{{ route('register') }}"  class="btn btn-primary">Pujar imatge</button>
+
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +16,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('LOGEADO COMO PACIENTE') }}
                 </div>
             </div>
         </div>
