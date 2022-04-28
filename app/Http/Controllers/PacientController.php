@@ -9,10 +9,9 @@ use App\Models\Pacient;
 class PacientController extends Controller
 {
     function index(){
-        return view('dashboards.pacients.upload_file');
+        return view('dashboards.pacients.index');
     }
   
-
     public function dropzoneStore(Request $request)
     {
         $image = $request->file('file');
@@ -21,6 +20,10 @@ class PacientController extends Controller
         $image->move(public_path('images'),$imageName);
    
         return response()->json(['success'=>$imageName]);
+    }
+
+    public function showUploadImages(){
+        return view('dashboards.pacients.upload_file');
     }
 
    

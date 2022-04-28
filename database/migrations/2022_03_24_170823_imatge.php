@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('imatges', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ID_pacient_associat');
+            $table->string('imatge_pujada');
             $table->date('data_pujada');
             $table->string('comentaris_metge');
             $table->integer('percentatge_malignitat');
             $table->string('diagnostic');
-            $table->binary('mascara');
-            
-            
+            $table->string('mascara');
             $table->rememberToken();
             $table->timestamps();
         });

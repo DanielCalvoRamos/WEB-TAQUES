@@ -27,15 +27,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function(){
-    Route::get('dashboard',[PacientController::class,'index'])->name('pacient.dashboard');
-    Route::post('dropzone/store', [PacientController::class,'dropzoneStore'])->name('dropzone.store');
-
-});
-
 Route::group(['prefix'=>'metge','middleware'=>['isMetge','auth']],function(){
     
     Route::get('dashboard',[MetgeController::class,'index'])->name('metge.dashboard');
-    Route::get('dashboard',[MetgeController::class,'indexMetge'])->name('metge.dashboard');
+    Route::get('dashboard',[MetgeController::class,'getMetges'])->name('metge.dashboard');
+    Route::get('dashboard/{id}',[MetgeController::class, 'getPacientByID']);
+    Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageDetails']);
     
+});
+Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function(){
+    Route::get('dashboard',[PacientController::class,'index'])->name('pacient.dashboard');
+    Route::post('dropzone/store', [PacientController::class,'dropzoneStore'])->name('dropzone.store');
+    Route::get('dashboard/upload-images',[PacientController::class,'showUploadImages']);
+
 });

@@ -16,7 +16,12 @@
         <div class="row-sm">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Pujada de imatges del pacient') }}</div>
+                    <div class="card-header">
+                       
+                   
+                        <a href="{{ url()->previous() }}" class="btn btn-primary hBack"> GO BACK</a>
+                         {{ __('Pujada de imatges del pacient') }}
+                    </div>
                     <div class="card-body" >
                         <form action="{{route('dropzone.store')}}" method="post" name="file" files="true" enctype="multipart/form-data" class="dropzone bg-info"  id="image-upload">
                             @csrf

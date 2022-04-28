@@ -10,10 +10,7 @@
                 <form action="{{ route('register') }}"  >
                     <button onclick="{{ route('register') }}"  class="btn btn-primary">Crear usuari</button>
                 </form>
-                <div class="card-header">{{ __('Llistat dels usuaris') }}</div>
-                
-              
-               
+                <div class="card-header">Llistat dels usuaris</div>
                      
                 <div class="card-body">
                     @if (session('status'))
@@ -31,6 +28,7 @@
                         <th> COGNOM </th>
                         <th> DATA NAIXEMENT </th>
                         <th> NUM FOTOS </th>
+                        <th>  </th>
                     </thead>  
                     
                     <tbody>
@@ -39,11 +37,12 @@
                         @foreach ($metges=app\Models\Metge::where('id','=',Auth::user()->id)->get() as $metge)
                          @foreach($metge->pacients as $pacient)   
                         <tr>
-                            <td>{{$pacient->id}}</td>
+                            <td >{{$pacient->id}}</td>
                             <td>{{$pacient->nom}}</td>
                             <td>{{$pacient->cognom}}</td>
                             <td>{{$pacient->data_naixament}}</td>
                             <td>{{$pacient->num_fotos}}</td> 
+                            <td> <a href="{{ url("/metge/dashboard/{$pacient->id}") }}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls pacient</button></a></td>
                             
                         </tr>
                          @endforeach

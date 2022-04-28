@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Formulari creació pacient') }}</div>
+                <div class="card-header">
+                    <a href="{{ url()->previous() }}" class="btn btn-primary hBack"> GO BACK</a>
+                    {{ __('Formulari creació pacient') }}
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

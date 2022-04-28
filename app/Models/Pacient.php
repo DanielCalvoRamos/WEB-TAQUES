@@ -19,6 +19,6 @@ class Pacient extends Model implements AuthenticatableContract
     }
 
     public function imatges(){
-        return $this->hasMany(Imatge::class, 'id');
+        return $this->hasMany(Imatge::class, 'ID_pacient_associat');
     }
 }
