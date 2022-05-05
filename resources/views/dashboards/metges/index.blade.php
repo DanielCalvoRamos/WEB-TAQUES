@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <form action="{{ route('register') }}"  >
-                    <button onclick="{{ route('register') }}"  class="btn btn-primary">Crear usuari</button>
+                    <button onclick="{{ route('register') }}"  class="btn btn-primary">Crear pacient</button>
                 </form>
                      
                 <div class="card-body">
