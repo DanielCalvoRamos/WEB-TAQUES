@@ -33,7 +33,7 @@ Route::group(['prefix'=>'metge','middleware'=>['isMetge','auth']],function(){
     Route::get('dashboard',[MetgeController::class,'index'])->name('metge.dashboard');
     Route::get('dashboard',[MetgeController::class,'getMetges'])->name('metge.dashboard');
     Route::get('dashboard/{id}',[MetgeController::class, 'getPacientByID']);
-    Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageDetails']);  
+    Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageID']);  
     Route::post('dashboard/update-doctor',[MetgeController::class, 'updateAssociatedDoctor'])->name('update_doctor');
 });
 
@@ -42,7 +42,7 @@ Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function()
     Route::get('dashboard',[PacientController::class,'getPacient'])->name('pacient.dashboard');
     Route::post('dropzone/store', [PacientController::class,'dropzoneStoreImages'])->name('dropzone.store');
     Route::get('dashboard/upload-images',[PacientController::class,'showUploadImages']);
-    Route::get('dashboard/image/{id}',[PacientController::class,'getImageDetails']); 
+    Route::get('dashboard/image/{id}',[PacientController::class,'getImageID']); 
     Route::get('dashboard/change-password',[PacientController::class,'changePassword'])->name('change_password');
 });
 

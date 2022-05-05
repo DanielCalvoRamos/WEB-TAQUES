@@ -50,11 +50,10 @@
                         @foreach ($pacients=app\Models\Pacient::where('id','=',$id)->get() as $pacient)
                         @foreach($pacient->imatges->reverse() as $imatge)   
                        <tr>
-                           <td>{{$imatge->data_pujada}}</td>
+                           <td>{{date('d-m-Y', strtotime($imatge->data_pujada))}}</td>
                            <td><img src="/images/{{$imatge->imatge_pujada}}" height="150" width="200"/> </td>
                            <td><img src="/images/{{$imatge->mascara}}" height="150" width="200"/> </td>
                            <td> <a href="{{ url("/metge/dashboard/{$pacient->id}/image/{$imatge->id}")}}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls imatge</button></a></td>
-                           
                        </tr>
                         @endforeach
                        @endforeach

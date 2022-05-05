@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Metge;
 use App\Models\Pacient;
 use App\Models\User;
+use App\Models\Imatge;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Route;
@@ -38,8 +39,9 @@ class MetgeController extends Controller{
         return view('/dashboards/metges/historic_pacient',compact('pacients','metges'));
     }
 
-    public function getImageDetails(){
-        return view('/dashboards/metges/detallImatge_metge');
+    public function getImageID($id, $id_imatge){
+        $imatge=Imatge::find($id_imatge);
+        return view('/dashboards/metges/detallImatge_metge',compact('imatge'));
     }
 
     public function updateAssociatedDoctor(Request $request){

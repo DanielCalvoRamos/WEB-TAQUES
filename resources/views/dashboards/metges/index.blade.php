@@ -39,7 +39,7 @@
                             <td >{{$pacient->id}}</td>
                             <td>{{$pacient->nom}}</td>
                             <td>{{$pacient->cognom}}</td>
-                            <td>{{$pacient->data_naixament}}</td>
+                            <td>{{date('d-m-Y', strtotime($pacient->data_naixament))}}</td>
                             <td>{{$pacient->num_fotos}}</td> 
                             <td> <a href="{{ url("/metge/dashboard/{$pacient->id}") }}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls pacient</button></a></td>
                             

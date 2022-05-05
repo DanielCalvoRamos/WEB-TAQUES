@@ -64,8 +64,9 @@ class PacientController extends Controller
         return view('/dashboards/metges/historic_pacient',compact('pacients'));
     }
 
-    public function getImageDetails(){
-        return view('/dashboards/pacients/detallImatge_pacient');
+    public function getImageID($id_imatge){
+        $imatge=Imatge::find($id_imatge);
+        return view('/dashboards/pacients/detallImatge_pacient',compact('imatge'));
     }
 
 
