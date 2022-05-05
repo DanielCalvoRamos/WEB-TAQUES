@@ -6,6 +6,7 @@ use App\Http\Controllers\MetgeController;
 use App\Http\Controllers\PacientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /*
@@ -27,17 +28,24 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//rutas que verá el médico
 Route::group(['prefix'=>'metge','middleware'=>['isMetge','auth']],function(){
-    
     Route::get('dashboard',[MetgeController::class,'index'])->name('metge.dashboard');
     Route::get('dashboard',[MetgeController::class,'getMetges'])->name('metge.dashboard');
     Route::get('dashboard/{id}',[MetgeController::class, 'getPacientByID']);
-    Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageDetails']);
-    
+    Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageDetails']);  
+    Route::post('dashboard/update-doctor',[MetgeController::class, 'updateAssociatedDoctor'])->name('update_doctor');
 });
+
+//rutas que verá el paciente
 Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function(){
-    Route::get('dashboard',[PacientController::class,'index'])->name('pacient.dashboard');
+    Route::get('dashboard',[PacientController::class,'getPacient'])->name('pacient.dashboard');
     Route::post('dropzone/store', [PacientController::class,'dropzoneStore'])->name('dropzone.store');
     Route::get('dashboard/upload-images',[PacientController::class,'showUploadImages']);
-
+    Route::get('dashboard/image/{id}',[PacientController::class,'getImageDetails']); 
+    Route::get('dashboard/change-password',[PacientController::class,'changePassword'])->name('change_password');
 });
+
+//rutas que verán todos los usuarios
+Route::get('dashboard/canviar-password',[UserController::class,'changePassword'])->name('change_password');
+Route::post('dashboard/update-password',[UserController::class,'updatePassword'])->name('update_password');

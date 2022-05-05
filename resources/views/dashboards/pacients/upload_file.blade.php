@@ -8,7 +8,7 @@
 <script type="text/javascript">
     Dropzone.options.imageUpload = {
         maxFilesize: 20,
-        acceptedFiles: ".jpeg,.jpg,.png,.gif"
+        acceptedFiles: ".jpeg,.jpg,.png"
     };
 </script>
 

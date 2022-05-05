@@ -10,7 +10,6 @@
                 <form action="{{ route('register') }}"  >
                     <button onclick="{{ route('register') }}"  class="btn btn-primary">Crear usuari</button>
                 </form>
-                <div class="card-header">Llistat dels usuaris</div>
                      
                 <div class="card-body">
                     @if (session('status'))

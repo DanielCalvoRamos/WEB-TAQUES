@@ -7,6 +7,8 @@ use App\Models\Metge;
 use App\Models\Pacient;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Route;
 
 class MetgeController extends Controller{
 
@@ -25,17 +27,26 @@ class MetgeController extends Controller{
         $id_pacient=Pacient::where('id','=',$id)->select('nom','cognom')->get();
         $nom=$id_pacient->pluck('nom')[0];
         $cognom=$id_pacient->pluck('cognom')[0];
+        $metges=Metge::all();
         
-        return view('dashboards.metges.historic_pacient',compact('nom','cognom','id'));
+        return view('dashboards.metges.historic_pacient',compact('nom','cognom','id','metges'));
     }
 
     public function getPacients(){
-    $pacients=Pacient::all();
-    return view('/dashboards/metges/historic_pacient',compact('pacients'));
+        $pacients=Pacient::all();
+        $metges=Metge::all();
+        return view('/dashboards/metges/historic_pacient',compact('pacients','metges'));
     }
 
     public function getImageDetails(){
-        return view('/dashboards/metges/detallImatge');
+        return view('/dashboards/metges/detallImatge_metge');
+    }
+
+    public function updateAssociatedDoctor(Request $request){
+        $pacient=Pacient::find($request->pacient_id);
+        $pacient->ID_metge_associat=$request->ID_metge_seleccionat;
+        $pacient->update();
+        return redirect('/metge/dashboard')->with('status','Se ha cambiat el metge associat correctament');
     }
 
     
