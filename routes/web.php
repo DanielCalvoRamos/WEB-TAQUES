@@ -40,7 +40,7 @@ Route::group(['prefix'=>'metge','middleware'=>['isMetge','auth']],function(){
 //rutas que verá el paciente
 Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function(){
     Route::get('dashboard',[PacientController::class,'getPacient'])->name('pacient.dashboard');
-    Route::post('dropzone/store', [PacientController::class,'dropzoneStore'])->name('dropzone.store');
+    Route::post('dropzone/store', [PacientController::class,'dropzoneStoreImages'])->name('dropzone.store');
     Route::get('dashboard/upload-images',[PacientController::class,'showUploadImages']);
     Route::get('dashboard/image/{id}',[PacientController::class,'getImageDetails']); 
     Route::get('dashboard/change-password',[PacientController::class,'changePassword'])->name('change_password');

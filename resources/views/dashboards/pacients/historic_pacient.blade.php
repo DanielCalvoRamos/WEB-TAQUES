@@ -31,11 +31,11 @@
                     
                     <tbody>
                         @foreach ($pacients=app\Models\Pacient::where('id','=',$id)->get() as $pacient)
-                        @foreach($pacient->imatges as $imatge)   
+                        @foreach($pacient->imatges->reverse() as $imatge)   
                        <tr>
                            <td>{{$imatge->data_pujada}}</td>
-                           <td>{{$imatge->imatge_pujada}}</td>
-                           <td>{{$imatge->mascara}}</td> 
+                           <td><img src="/images/{{$imatge->imatge_pujada}}" height="150" width="200"/> </td>
+                           <td><img src="/images/{{$imatge->mascara}}" height="150" width="200"/> </td>
                            <td> <a href="{{ url("/pacient/dashboard/image/{$imatge->id}")}}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls imatge</button></a></td>
                            
                        </tr>
