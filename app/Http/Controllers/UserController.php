@@ -17,21 +17,22 @@ class UserController extends Controller
     }
 
     public function updatePassword(Request $request){
-        dd($request->all());
+      
         $request->validate([
             'old_password'          =>   'required|min:6|max:100',
             'new_password'          =>   'required|min:6|max:100',
-            'new_password-confirm'  =>   'required|min:6|max:100'
+            'new_password_confirm'  =>   'required|min:6|max:100'
 
         ]);
 
         $usuari_actual=Auth::user();
+        dd($request->all());
         if(Hash::check($request->old_password,$usuari_actual->password)){
             $usuari_actual->password=Hash::make($request->new_password);
             $usuari_actual->update();
-            return redirect()->back()->with('status','Contrasenya actualitzada correctament');
+            return redirect()->route('metge.dashboard')->with('status','Contrasenya actualitzada correctament');
         }else{
-            return redirect()->back()->with('error','Contrasenya antiga incorrecta');
+            return redirect()->back()->with('status','Contrasenya antiga incorrecta');
         }
 
     }

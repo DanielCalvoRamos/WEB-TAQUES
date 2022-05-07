@@ -43,7 +43,6 @@ Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function()
     Route::post('dropzone/store', [PacientController::class,'dropzoneStoreImages'])->name('dropzone.store');
     Route::get('dashboard/upload-images',[PacientController::class,'showUploadImages']);
     Route::get('dashboard/image/{id}',[PacientController::class,'getImageID']); 
-    Route::get('dashboard/change-password',[PacientController::class,'changePassword'])->name('change_password');
 });
 
 //rutas que verán todos los usuarios

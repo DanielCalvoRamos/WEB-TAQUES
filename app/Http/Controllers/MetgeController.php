@@ -45,6 +45,7 @@ class MetgeController extends Controller{
     }
 
     public function updateAssociatedDoctor(Request $request){
+
         $pacient=Pacient::find($request->pacient_id);
         $pacient->ID_metge_associat=$request->ID_metge_seleccionat;
         $pacient->update();
