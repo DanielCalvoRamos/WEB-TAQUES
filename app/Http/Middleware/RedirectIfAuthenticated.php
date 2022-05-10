@@ -29,6 +29,8 @@ class RedirectIfAuthenticated
                 return redirect()->route('pacient.dashboard');
             }elseif(Auth::guard($guard)->check() && Auth::user()->role==1){
                 return redirect()->route('metge.dashboard');
+            }elseif(Auth::guard($guard)->check() && Auth::user()->role==0){
+                return redirect()->route('admin.dashboard');
             }
         }
 

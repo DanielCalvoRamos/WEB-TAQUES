@@ -45,6 +45,11 @@ Route::group(['prefix'=>'pacient','middleware'=>['isPacient','auth']],function()
     Route::get('dashboard/image/{id}',[PacientController::class,'getImageID']); 
 });
 
+//rutas que verá el admin
+Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth']],function(){
+    Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+});
+
 //rutas que verán todos los usuarios
 Route::get('dashboard/canviar-password',[UserController::class,'changePassword'])->name('change_password');
 Route::post('dashboard/update-password',[UserController::class,'updatePassword'])->name('update_password');

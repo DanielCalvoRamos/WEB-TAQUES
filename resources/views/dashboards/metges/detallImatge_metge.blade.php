@@ -22,6 +22,7 @@
                     <thead>
                         <th> IMATGE ORIGINAL </th>
                         <th> IMATGE AMB MÀSCARA </th>
+                        <th></th>
                 
                     </thead>  
                     
@@ -35,6 +36,7 @@
                         <td>{{date('d-m-Y', strtotime($imatge->data_pujada))}}</td>
                        </tr>
                        <tr>
+
                         <th>Comentaris metge:</th>
                         <td>{{$imatge->comentaris_metge}}</td>
                        </tr>

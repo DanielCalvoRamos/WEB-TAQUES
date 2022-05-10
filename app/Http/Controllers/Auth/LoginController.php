@@ -34,6 +34,8 @@ class LoginController extends Controller
             return route('pacient.dashboard');
         }elseif (Auth()->user()->role==1){
             return route('metge.dashboard');
+        }elseif (Auth()->user()->role==0){
+            return route('admin.dashboard');
         }
     }
 
@@ -49,19 +51,16 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $input=$request->all();
-        $this->validate($request,[
-            'email'=>'required|email',
-            'password'=>'required'
-        ]);
-
         if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
             if(auth()->user()->role==2){
-                return redirect()->route('pacient.dashboard');
+                return redirect()->route('pacient.dashboard')->with('status','Sessió iniciada correctament');
             }elseif(auth()->user()->role==1){
-                return redirect()->route('metge.dashboard');
+                return redirect()->route('metge.dashboard')->with('status','Sessió iniciada correctament');
+            }elseif(auth()->user()->role==0){
+                return redirect()->route('admin.dashboard')->with('status','Sessió iniciada correctament');
             }
         }else{
-            return redirect()->route('login')->with('error','Email o password incorrecte');
+            return redirect()->route('login')->with('status','Email o password incorrecte');
         }
     }
 }
