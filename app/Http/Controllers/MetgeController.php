@@ -41,7 +41,7 @@ class MetgeController extends Controller{
 
     public function getImageID($id, $id_imatge){
         $imatge=Imatge::find($id_imatge);
-        return view('/dashboards/metges/detallImatge_metge',compact('imatge'));
+        return view('/dashboards/metges/detallImatge_metge',compact('imatge','id_imatge'));
     }
 
     public function updateAssociatedDoctor(Request $request){
@@ -50,6 +50,17 @@ class MetgeController extends Controller{
         $pacient->ID_metge_associat=$request->ID_metge_seleccionat;
         $pacient->update();
         return redirect('/metge/dashboard')->with('status','Se ha cambiat el metge associat correctament');
+    }
+
+    public function update_detallsImatge(Request $request){
+       
+        $imatge=Imatge::find($request->id);
+        $imatge->comentaris_metge=$request->comentaris_metge;
+        $imatge->percentatge_malignitat=$request->percentatge_malignitat;
+        $imatge->diagnostic=$request->diagnostic;
+
+        $imatge->update();
+        return redirect("/metge/dashboard/{$imatge->ID_pacient_associat}/image/{$request->id}")->with('status',"Dades de la imatge {$request->id} canviats correctament");
     }
 
     

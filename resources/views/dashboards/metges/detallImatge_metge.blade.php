@@ -19,6 +19,8 @@
                 </div>
 
                 <table class="table table-striped table-hover">
+                    <form method="POST" action="{{ route('update_detallsImatge') }}">
+                        @csrf
                     <thead>
                         <th> IMATGE ORIGINAL </th>
                         <th> IMATGE AMB MÀSCARA </th>
@@ -28,26 +30,34 @@
                     
                     <tbody>
                        <tr>
-                        <td><img src="/images/{{$imatge->imatge_pujada}}" height="500" width="540"/> </td>
-                        <td><img src="/images/{{$imatge->mascara}}" height="500" width="540"/> </td> 
+                        <td><img src="/images/{{$imatge->imatge_pujada}}" height="400" width="450"/> </td>
+                        <td><img src="/images/{{$imatge->mascara}}" height="400" width="450"/> </td> 
+                        <td></td>
                        </tr>
                        <tr>
+                        
                         <th>Data pujada:</th>
                         <td>{{date('d-m-Y', strtotime($imatge->data_pujada))}}</td>
+                        <td></td>
                        </tr>
                        <tr>
 
                         <th>Comentaris metge:</th>
-                        <td>{{$imatge->comentaris_metge}}</td>
+                        <td><input id="comentaris_metge" class="form-control" name="comentaris_metge" value="{{$imatge->comentaris_metge}}"></td>
+                        <td><button type="submit" class="btn btn-outline-primary float-right">Guardar canvis</button></td>
                        </tr>
                        <tr>
                         <th>Percentatge malignitat:</th>
-                        <td>{{$imatge->percentatge_malignitat}}%</td>
+                        <td><input id="percentatge_malignitat" class="form-control" name="percentatge_malignitat" value="{{$imatge->percentatge_malignitat}}%"></td>
+                        <td><button type="submit" class="btn btn-outline-primary float-right">Guardar canvis</button></td>
                        </tr>
                        <tr>
                         <th>Diagnòstic:</th>
-                        <td>{{$imatge->diagnostic}}</td>
-                       </tr>     
+                        <td><input id="diagnostic" class="form-control" name="diagnostic" value="{{$imatge->diagnostic}}"></td>
+                        <td><button type="submit" class="btn btn-outline-primary float-right">Guardar canvis</button></td>
+                       </tr> 
+                        <input type="hidden" id="id" class="form-control" name="id" value="{{$id_imatge}}">
+                    </form>
                       
                     </tbody> 
 

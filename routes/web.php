@@ -35,6 +35,7 @@ Route::group(['prefix'=>'metge','middleware'=>['isMetge','auth']],function(){
     Route::get('dashboard/{id}',[MetgeController::class, 'getPacientByID']);
     Route::get('dashboard/{id}/image/{id_image}',[MetgeController::class, 'getImageID']);  
     Route::post('dashboard/update-doctor',[MetgeController::class, 'updateAssociatedDoctor'])->name('update_doctor');
+    Route::post('dashboard/update-detallsImatge',[MetgeController::class, 'update_detallsImatge'])->name('update_detallsImatge');
 });
 
 //rutas que verá el paciente
