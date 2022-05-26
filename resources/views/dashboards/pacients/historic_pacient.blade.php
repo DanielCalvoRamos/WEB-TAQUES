@@ -5,7 +5,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url("/pacient/dashboard/upload-images") }}"><button type="button" class="btn btn-outline-primary ">Pujar nova imatge</button></a>
@@ -26,6 +26,7 @@
                         <th> DATA </th>
                         <th> IMATGE ORIGINAL </th>
                         <th> IMATGE AMB MASCARA </th>
+                        <th> DETALLS </th>
                         <th> </th>
                     </thead>  
                     
@@ -37,7 +38,14 @@
                            <td><img src="/images/{{$imatge->imatge_pujada}}" height="150" width="200"/> </td>
                            <td><img src="/images/{{$imatge->mascara}}" height="150" width="200"/> </td>
                            <td> <a href="{{ url("/pacient/dashboard/image/{$imatge->id}")}}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls imatge</button></a></td>
-                           
+                            <td>@empty($imatge->comentaris_metge)
+                                No hi ha comentaris del metge
+                            @else
+                                El metge ha realitzat un comentari
+                            @endempty
+                            
+                        </td>
+
                        </tr>
                         @endforeach
                        @endforeach

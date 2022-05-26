@@ -35,7 +35,7 @@ class UserController extends Controller
                 return redirect('metge.dashboard')->with('status','We send a email verification, pleaseconfirm.');
             }
         }else{
-            return redirect('/login')->with('status','We send a email verification, pleaseconfirm.');
+            return redirect('/login')->with('status','We send a email verification, please confirm.');
         }
             
     }

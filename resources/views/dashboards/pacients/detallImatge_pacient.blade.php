@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url()->previous() }}" class="btn btn-primary hBack"> GO BACK</a>
+                    <a href="{{ url('pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
                     {{ __('Detalls de la imatge pacient') }}
                 </div>
 
