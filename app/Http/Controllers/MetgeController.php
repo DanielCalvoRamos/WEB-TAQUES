@@ -25,12 +25,13 @@ class MetgeController extends Controller{
 
 
     public function getPacientByID($id){
-        $id_pacient=Pacient::where('id','=',$id)->select('nom','cognom')->get();
+        $id_pacient=Pacient::where('id','=',$id)->select('nom','cognom','ID_metge_associat')->get();
+        $ID_metge_associat=$id_pacient->pluck('ID_metge_associat')[0];
         $nom=$id_pacient->pluck('nom')[0];
         $cognom=$id_pacient->pluck('cognom')[0];
         $metges=Metge::all();
         
-        return view('dashboards.metges.historic_pacient',compact('nom','cognom','id','metges'));
+        return view('dashboards.metges.historic_pacient',compact('nom','cognom','id','metges','ID_metge_associat'));
     }
 
     public function getPacients(){
@@ -39,9 +40,9 @@ class MetgeController extends Controller{
         return view('/dashboards/metges/historic_pacient',compact('pacients','metges'));
     }
 
-    public function getImageID($id, $id_imatge){
+    public function getImageID($id_pacient, $id_imatge){
         $imatge=Imatge::find($id_imatge);
-        return view('/dashboards/metges/detallImatge_metge',compact('imatge','id_imatge'));
+        return view('/dashboards/metges/detallImatge_metge',compact('imatge','id_imatge','id_pacient'));
     }
 
     public function updateAssociatedDoctor(Request $request){

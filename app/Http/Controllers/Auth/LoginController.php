@@ -30,11 +30,11 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo(){
-        if(Auth()->user()->role==2){
+        if(Auth()->user()->role==env('ROL_PACIENT')){
             return route('pacient.dashboard');
-        }elseif (Auth()->user()->role==1){
+        }elseif (Auth()->user()->role==env('ROL_METGE')){
             return route('metge.dashboard');
-        }elseif (Auth()->user()->role==0){
+        }elseif (Auth()->user()->role==env('ROL_ADMIN')){
             return route('admin.dashboard');
         }
     }
@@ -52,11 +52,11 @@ class LoginController extends Controller
     public function login(Request $request){
         $input=$request->all();
         if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
-            if(auth()->user()->role==2){
+            if(auth()->user()->role==env('ROL_PACIENT')){
                 return redirect()->route('pacient.dashboard')->with('status','Sessió iniciada correctament');
-            }elseif(auth()->user()->role==1){
+            }elseif(auth()->user()->role==env('ROL_METGE')){
                 return redirect()->route('metge.dashboard')->with('status','Sessió iniciada correctament');
-            }elseif(auth()->user()->role==0){
+            }elseif(auth()->user()->role==env('ROL_ADMIN')){
                 return redirect()->route('admin.dashboard')->with('status','Sessió iniciada correctament');
             }
         }else{

@@ -35,8 +35,8 @@
                         @foreach($pacient->imatges->reverse() as $imatge)   
                        <tr>
                            <td>{{date('d-m-Y', strtotime($imatge->data_pujada))}}</td>
-                           <td><img src="/images/{{$imatge->imatge_pujada}}" height="150" width="200"/> </td>
-                           <td><img src="/images/{{$imatge->mascara}}" height="150" width="200"/> </td>
+                           <td><img src="/images/{{$imatge->imatge_pujada}}" height= "{{env('IMG_HEIGHT_HISTORIC')}}" width="{{env('IMG_WIDTH_HISTORIC')}}"/> </td>
+                           <td><img src="/images/{{$imatge->mascara}}" height= "{{env('IMG_HEIGHT_HISTORIC')}}" width="{{env('IMG_WIDTH_HISTORIC')}}"/> </td>
                            <td> <a href="{{ url("/pacient/dashboard/image/{$imatge->id}")}}"><button type="button" class="btn btn-outline-primary float-right">Veure detalls imatge</button></a></td>
                             <td>@empty($imatge->comentaris_metge)
                                 No hi ha comentaris del metge

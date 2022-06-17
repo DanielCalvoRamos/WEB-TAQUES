@@ -5,9 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                @if($id_pacient==$imatge->ID_pacient_associat)
                 <div class="card-header">
-                    <a href="{{ url()->previous() }}" class="btn btn-primary hBack"> GO BACK</a>
-                    {{ __('Detalls de la imatge metge') }}
+                    <a href="{{ url('metge/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                    Detalls de la imatge {{$imatge->id}}
                 </div>
 
                 <div class="card-body">
@@ -30,8 +31,8 @@
                     
                     <tbody>
                        <tr>
-                        <td><img src="/images/{{$imatge->imatge_pujada}}" height="400" width="450"/> </td>
-                        <td><img src="/images/{{$imatge->mascara}}" height="400" width="450"/> </td> 
+                        <td><img src="/images/{{$imatge->imatge_pujada}}"  height= "{{env('IMG_HEIGHT_DET_IMG_METGE')}}" width="{{env('IMG_WIDTH_DET_IMG_METGE')}}"/> </td>
+                        <td><img src="/images/{{$imatge->mascara}}"  height= "{{env('IMG_HEIGHT_DET_IMG_METGE')}}" width="{{env('IMG_WIDTH_DET_IMG_METGE')}}"/> </td> 
                         <td></td>
                        </tr>
                        <tr>
@@ -62,6 +63,12 @@
                     </tbody> 
 
                 </table>
+                @else
+                <div class="card-header">
+                    <a href="{{ url('/pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                    No tens accés a aquesta imatge
+                </div>
+                @endif
             </div>
         </div>
     </div>

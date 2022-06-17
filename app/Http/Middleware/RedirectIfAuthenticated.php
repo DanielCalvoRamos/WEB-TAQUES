@@ -25,11 +25,11 @@ class RedirectIfAuthenticated
            /*if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }*/
-            if(Auth::guard($guard)->check() && Auth::user()->role==2){
+            if(Auth::guard($guard)->check() && Auth::user()->role==env('ROL_PACIENT')){
                 return redirect()->route('pacient.dashboard');
-            }elseif(Auth::guard($guard)->check() && Auth::user()->role==1){
+            }elseif(Auth::guard($guard)->check() && Auth::user()->role==env('ROL_METGE')){
                 return redirect()->route('metge.dashboard');
-            }elseif(Auth::guard($guard)->check() && Auth::user()->role==0){
+            }elseif(Auth::guard($guard)->check() && Auth::user()->role==env('ROL_ADMIN')){
                 return redirect()->route('admin.dashboard');
             }
         }
