@@ -10,7 +10,7 @@
                 @if(Auth::user()->id==$ID_metge_associat)
                
                     <div class="card-header">
-                        <a href="{{ url('/metge/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                        <a href="{{ url('/metge/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                         Historic del pacient {{$nom}} {{$cognom}}
                     </div>
                     <form action="{{ route('update_doctor') }}" method="POST">
@@ -66,7 +66,7 @@
                     </table>
                 @else
                 <div class="card-header">
-                    <a href="{{ url('/metge/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                    <a href="{{ url('/metge/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                     No tens accés a l'històric d'aquest pacient
                 </div>
                 @endif

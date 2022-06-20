@@ -12,7 +12,7 @@
                     <div class="card-header">
                        
                    
-                        <a href="{{ url('pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                        <a href="{{ url('pacient/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                          {{ __('Pujada de imatges del pacient') }}
                     </div>
                     <div class="card-body" >

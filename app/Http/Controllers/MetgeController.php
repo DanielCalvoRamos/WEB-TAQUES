@@ -35,7 +35,7 @@ class MetgeController extends Controller{
             
             return view('dashboards.metges.historic_pacient',compact('nom','cognom','id','metges','ID_metge_associat'));
         }else{
-            return redirect('/metge/dashboard')->with('status','El pacient al que intentes accedir no existent');
+            return redirect('/metge/dashboard')->with('status','El pacient al que intentes accedir no existeix');
         }
       
     }
@@ -57,14 +57,16 @@ class MetgeController extends Controller{
         $pacient=Pacient::find($request->pacient_id);
         $pacient->ID_metge_associat=$request->ID_metge_seleccionat;
         $pacient->update();
-        return redirect('/metge/dashboard')->with('status','Se ha cambiat el metge associat correctament');
+        return redirect('/metge/dashboard')->with('status','S´ha cambiat el metge associat correctament');
     }
 
     public function update_detallsImatge(Request $request){
-       
+     
         $imatge=Imatge::find($request->id);
         $imatge->comentaris_metge=$request->comentaris_metge;
         $imatge->percentatge_malignitat=$request->percentatge_malignitat;
+        
+      
         $imatge->diagnostic=$request->diagnostic;
 
         $imatge->update();

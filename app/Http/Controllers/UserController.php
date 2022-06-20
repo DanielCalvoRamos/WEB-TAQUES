@@ -30,12 +30,12 @@ class UserController extends Controller
             if(Hash::check($request->old_password,$usuari_actual->password)){
                 $usuari_actual->password=Hash::make($request->new_password);
                 $usuari_actual->update();
-                return redirect()->route('metge.dashboard')->with('status','Contrasenya actualitzada correctament');
+                return redirect()->route('pacient.dashboard')->with('status','Contrasenya actualitzada correctament');
             }else{
-                return redirect('metge.dashboard')->with('status','We send a email verification, pleaseconfirm.');
+                return redirect()->back()->with('status','La contrasenya actual es incorrecta');
             }
         }else{
-            return redirect('/login')->with('status','We send a email verification, please confirm.');
+            return redirect()->back()->with('status','la nova contrasenya no coincideix');
         }
             
     }

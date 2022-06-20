@@ -8,7 +8,7 @@
                 @if($imatge!=null)
                 @if($pacient_id==$imatge->ID_pacient_associat)
                     <div class="card-header">
-                        <a href="{{ url('pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                        <a href="{{ url('pacient/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                         Detalls de la imatge {{$imatge->id}}
                     </div>
 
@@ -44,13 +44,13 @@
                     </table>
                     @else
                     <div class="card-header">
-                        <a href="{{ url('/pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                        <a href="{{ url('/pacient/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                         No tens accés a aquesta imatge
                     </div>
                     @endif
                 @else
                     <div class="card-header">
-                        <a href="{{ url('/pacient/dashboard') }}" class="btn btn-primary hBack"> GO BACK</a>
+                        <a href="{{ url('/pacient/dashboard') }}" class="btn btn-primary hBack"> ENRERE</a>
                         La imatge a la que intentes accedir no existeix
                     </div>
 

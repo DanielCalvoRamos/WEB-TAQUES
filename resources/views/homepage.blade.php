@@ -19,7 +19,7 @@
                     <ul class="navbar-nav ms-auto">
                         @if (Route::has('login'))
                             @auth
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}"></a></li>
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
                             @endauth
@@ -33,7 +33,14 @@
             <div class="container px-4 text-center">
                 <h1 class="fw-bolder">Benvingut a la web taques</h1>
                 <p class="lead">Una plataforma web per a l'intercanvi d'imatges de taques entre metge i pacient</p>
-                <a class="btn btn-lg btn-light" href="{{ route('login') }}">Inicia sessió</a>
+                @if (Route::has('login'))
+                @auth
+                <a class="btn btn-lg btn-light" href="{{ route('login') }}">Ves al teu perfil</a>
+            @else
+            <a class="btn btn-lg btn-light" href="{{ route('login') }}">Inicia sessió</a>
+                @endauth
+        @endif
+               
             </div>
         </header>
 
