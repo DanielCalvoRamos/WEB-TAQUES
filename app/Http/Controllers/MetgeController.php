@@ -65,8 +65,6 @@ class MetgeController extends Controller{
         $imatge=Imatge::find($request->id);
         $imatge->comentaris_metge=$request->comentaris_metge;
         $imatge->percentatge_malignitat=$request->percentatge_malignitat;
-        
-      
         $imatge->diagnostic=$request->diagnostic;
 
         $imatge->update();
